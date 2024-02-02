@@ -20,7 +20,7 @@ function processarLogin() {
         .then(userCredential => {
             const user = userCredential.user;
             console.log('Login bem-sucedido:', user.uid);
-            window.location.href = 'public/views/processar.html';
+            window.location.href = '../views/processar.html';
         })
         .catch(error => {
             console.error('Erro ao realizar o login:', error.message);

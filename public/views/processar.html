@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body onload="iniciarBanco()">
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script>
+        function iniciarBanco() {
+            const firebaseConfig = {
+                apiKey: "AIzaSyD4sZLJhNXYf_LZeF85LZhq_Myg_mGSjNU",
+                authDomain: "sistema-corraproabraco.firebaseapp.com",
+                projectId: "sistema-corraproabraco",
+                storageBucket: "sistema-corraproabraco.appspot.com",
+                messagingSenderId: "626902617736",
+                appId: "1:626902617736:web:72f82ee3b30cda678dd93d"
+            };
+            firebase.initializeApp(firebaseConfig);
+
+            // Obtém a referência do usuário autenticado
+            const user = firebase.auth().currentUser;
+
+            firebase.auth().onAuthStateChanged(user => {
+                if (user) {
+                    // Usuário autenticado
+                    console.log('Usuário autenticado:', user.email);
+
+                    // Obtém uma referência ao Firestore
+                    const db = firebase.firestore();
+
+                    // Obtém uma referência ao documento do usuário no Firestore
+                    const userDocRef = db.collection("users").doc(user.email);
+
+                    // Obtém o documento do usuário
+                    userDocRef.get()
+                        .then(doc => {
+                            if (doc.exists) {
+                                // O documento existe, verifica o papel
+                                const papel = doc.data().papel;
+
+                                if (papel === "admin") {
+                                    window.location.href = '../views/inicialadmin.html'
+                                } else {
+                                    window.location.href = '../views/inicialuser.html'
+                                }
+                            } else {
+                                window.location.href = '.../views/index.html'
+                            }
+                        })
+                        .catch(error => {
+                            window.location.href = '.../views/index.html'
+                        });
+                } else {
+                    window.location.href = '../views/index.html'
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
