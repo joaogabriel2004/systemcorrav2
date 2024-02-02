@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de login</title>
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body onload="iniciarBanco()">
+    <div class="principal">
+        <h1 class="title">LOGIN</h1>
+        <form class="form-login">
+            <label for="email">E-mail:</label></br>
+            <input type="email" id="email" name="email" style="margin-bottom: 25px;" required>
+            <br>
+            <label for="senha">Senha:</label><br/>
+            <input type="password" id="senha" name="senha" required>
+            <br>
+            <button class="submit-button" type="button" style="margin-top:25px;" onclick="processarLogin()">Enviar</button>
+        </form>
+    </div>
+
+    <!-- Adicione essa tag no head do seu HTML para incluir o script do Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+    <!-- Seu script login.js -->
+    <script src="../script/index.js"></script>
+
+</body>
+</html>
