@@ -6,7 +6,7 @@
     <title>Tela de login</title>
     <link rel="stylesheet" href="public/css/index.css">
 </head>
-<body onload="iniciarBanco()">
+<body onload="processarLogin()">
     <div class="principal">
         <h1 class="title">LOGIN</h1>
         <form class="form-login">
@@ -27,7 +27,7 @@
 
     <!-- Seu script login.js -->
     <script>
-        function iniciarBanco() {
+        
             const firebaseConfig = {
                 apiKey: "AIzaSyD4sZLJhNXYf_LZeF85LZhq_Myg_mGSjNU",
                 authDomain: "sistema-corraproabraco.firebaseapp.com",
@@ -37,7 +37,7 @@
                 appId: "1:626902617736:web:72f82ee3b30cda678dd93d"
             };
             firebase.initializeApp(firebaseConfig);
-        }
+        
         
         function processarLogin() {
             const email = document.getElementById('email').value;
