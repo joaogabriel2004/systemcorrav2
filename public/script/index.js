@@ -1,4 +1,4 @@
-
+function iniciarBanco() {
     const firebaseConfig = {
         apiKey: "AIzaSyD4sZLJhNXYf_LZeF85LZhq_Myg_mGSjNU",
         authDomain: "sistema-corraproabraco.firebaseapp.com",
@@ -8,7 +8,7 @@
         appId: "1:626902617736:web:72f82ee3b30cda678dd93d"
     };
     firebase.initializeApp(firebaseConfig);
-
+}
 
 function processarLogin() {
     const email = document.getElementById('email').value;
